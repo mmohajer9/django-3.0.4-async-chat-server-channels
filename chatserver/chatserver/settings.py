@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     #? for async and concurrency
     'channels',
 
+    "chat",
+    
     'django_extensions',
     'corsheaders',
 ]

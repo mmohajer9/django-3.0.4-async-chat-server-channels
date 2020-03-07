@@ -5,6 +5,7 @@ from channels.auth import AuthMiddlewareStack
 from channels.security.websocket import AllowedHostsOriginValidator , OriginValidator
 
 from chat.consumers import ChatConsumer
+
 application = ProtocolTypeRouter({
     # Empty for now (http->django views is added by default)
 
@@ -18,7 +19,7 @@ application = ProtocolTypeRouter({
             #? similar to urls.py but async version !
             URLRouter(
                 [
-
+                    path("messages/<str:username>/", ChatConsumer),
                 ]
             )
         )
