@@ -24,6 +24,7 @@
 let loc = window.location
 let formData = $("#form")
 let msgInput = $("#id_message")
+let chatHolder = $("#chat-items")
 
 let wsStart = "ws://"
 loc.protocol === "https:" ? wsStart = "wss://" : wsStart = "ws://"
@@ -31,9 +32,13 @@ let endpoint = wsStart + loc.host + loc.pathname
 
 let socket = new WebSocket(endpoint)
 
+console.log(endpoint)
 
 socket.onmessage = e => {
     console.log("message", e);
+    let meesage = e.data
+    let chatDataMsg = JSON.parse(meesage)
+    chatHolder.append(`<li>${chatDataMsg.message} - ${chatDataMsg.username}</li>`)
 };
 
 socket.onerror = e => {

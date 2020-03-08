@@ -169,3 +169,14 @@ MEDIA_URL = '/media/'
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10485760
 
 HOST_URL = 'http://localhost:8000'
+
+
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
